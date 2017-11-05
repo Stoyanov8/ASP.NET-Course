@@ -1,0 +1,11 @@
+C:\Users\gstoy\Documents\Visual Studio 2017\Projects\ASP.Net\ASP.NET-Course.git\trunk\EmptyASP.NET\EmptyASP.NET\bin\Debug\netcoreapp2.0\EmptyASP.NET.deps.json
+C:\Users\gstoy\Documents\Visual Studio 2017\Projects\ASP.Net\ASP.NET-Course.git\trunk\EmptyASP.NET\EmptyASP.NET\bin\Debug\netcoreapp2.0\EmptyASP.NET.runtimeconfig.json
+C:\Users\gstoy\Documents\Visual Studio 2017\Projects\ASP.Net\ASP.NET-Course.git\trunk\EmptyASP.NET\EmptyASP.NET\bin\Debug\netcoreapp2.0\EmptyASP.NET.runtimeconfig.dev.json
+C:\Users\gstoy\Documents\Visual Studio 2017\Projects\ASP.Net\ASP.NET-Course.git\trunk\EmptyASP.NET\EmptyASP.NET\bin\Debug\netcoreapp2.0\EmptyASP.NET.dll
+C:\Users\gstoy\Documents\Visual Studio 2017\Projects\ASP.Net\ASP.NET-Course.git\trunk\EmptyASP.NET\EmptyASP.NET\bin\Debug\netcoreapp2.0\EmptyASP.NET.pdb
+C:\Users\gstoy\Documents\Visual Studio 2017\Projects\ASP.Net\ASP.NET-Course.git\trunk\EmptyASP.NET\EmptyASP.NET\obj\Debug\netcoreapp2.0\EmptyASP.NET.csprojResolveAssemblyReference.cache
+C:\Users\gstoy\Documents\Visual Studio 2017\Projects\ASP.Net\ASP.NET-Course.git\trunk\EmptyASP.NET\EmptyASP.NET\obj\Debug\netcoreapp2.0\EmptyASP.NET.csproj.CoreCompileInputs.cache
+C:\Users\gstoy\Documents\Visual Studio 2017\Projects\ASP.Net\ASP.NET-Course.git\trunk\EmptyASP.NET\EmptyASP.NET\obj\Debug\netcoreapp2.0\EmptyASP.NET.AssemblyInfoInputs.cache
+C:\Users\gstoy\Documents\Visual Studio 2017\Projects\ASP.Net\ASP.NET-Course.git\trunk\EmptyASP.NET\EmptyASP.NET\obj\Debug\netcoreapp2.0\EmptyASP.NET.AssemblyInfo.cs
+C:\Users\gstoy\Documents\Visual Studio 2017\Projects\ASP.Net\ASP.NET-Course.git\trunk\EmptyASP.NET\EmptyASP.NET\obj\Debug\netcoreapp2.0\EmptyASP.NET.dll
+C:\Users\gstoy\Documents\Visual Studio 2017\Projects\ASP.Net\ASP.NET-Course.git\trunk\EmptyASP.NET\EmptyASP.NET\obj\Debug\netcoreapp2.0\EmptyASP.NET.pdb

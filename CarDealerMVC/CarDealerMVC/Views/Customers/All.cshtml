@@ -1,0 +1,16 @@
+﻿@model List<CustomerViewModel>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>BirthDate</th>
+            <th>Young Driver</th>
+        </tr>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Name </td>
+                <td>@customer.BirthDate.ToShortDateString() </td>
+                <td>@customer.IsYoungDriver </td>
+            </tr>
+        }
+    </table>
