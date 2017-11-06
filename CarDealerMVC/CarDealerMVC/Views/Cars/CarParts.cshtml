@@ -1,0 +1,20 @@
+﻿@model CarViewModel
+
+<table>
+    <tr>
+        <th>Make </th>
+        <th>Model </th>
+        <th>Distance Travelled </th>
+        <th>Parts</th>
+    </tr>
+    <tr>
+        <td>@Model.Make</td>
+        <td>@Model.Model</td>
+        <td>@Model.TravelledDistance</td>
+        @foreach (var part in Model.Parts)
+        {
+            <td><strong>@part.Id</strong></td>
+            <td>@part.Name</td>
+        }
+    </tr>
+</table>

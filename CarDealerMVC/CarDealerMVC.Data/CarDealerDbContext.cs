@@ -27,15 +27,15 @@ namespace CarDealerMVC.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Car>()
-                .HasMany(x => x.Parts)
-                .WithOne(x => x.Car)
+            builder.Entity<PartCars>()
+               .HasOne(x => x.Part)
+               .WithMany(a => a.Cars)
                 .HasForeignKey(x => x.PartId);
 
-            builder.Entity<Part>()
-                .HasMany(x => x.Cars)
-                .WithOne(x => x.Part)
-                .HasForeignKey(x => x.CarId);
+            builder.Entity<PartCars>()
+               .HasOne(x => x.Car)
+               .WithMany(a => a.Parts)
+               .HasForeignKey(a => a.CarId);
 
             builder.Entity<PartCars>()
                 .HasKey(x => new { x.CarId, x.PartId });
@@ -43,7 +43,7 @@ namespace CarDealerMVC.Data
             builder.Entity<Car>()
                 .HasOne(x => x.Sale)
                 .WithOne(x => x.Car)
-                .HasForeignKey<Car>(x=> x.SaleId);
+                .HasForeignKey<Car>(x => x.SaleId);
 
             builder.Entity<Sale>()
                 .HasOne(x => x.Customer)

@@ -10,5 +10,7 @@ namespace CarDealerMVC.Models.CustomerViewModels
         public DateTime BirthDate { get; set; }
 
         public bool IsYoungDriver { get; set; }
+
+        public CustomerCarViewModel Cars {get;set;}
     }
 }

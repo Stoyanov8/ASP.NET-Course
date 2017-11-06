@@ -6,5 +6,9 @@
     public interface ICarServices
     {
         IEnumerable<CarViewModel> CarByMake(string make);
+
+        CarViewModel ShowParts(int id);
+
+        List<CarViewModel> All();
     }
 }

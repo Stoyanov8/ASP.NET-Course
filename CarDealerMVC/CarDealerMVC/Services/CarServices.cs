@@ -4,6 +4,8 @@
     using CarDealerMVC.Models.CarViewModel;
     using CarDealerMVC.Data;
     using System.Linq;
+    using CarDealerMVC.Entities;
+    using CarDealerMVC.Models.PartViewModels;
 
     public class CarServices : ICarServices
     {
@@ -23,10 +25,44 @@
                      Make = x.Make,
                      Model = x.Model,
                      TravelledDistance = x.TravelledDistance,
-                     Parts = x.Parts.Where(a => a.CarId == x.Id).ToList()
+                     Parts = x.Parts.Select(a => new PartViewModel
+                     {
+                         Id = a.Part.Id,
+                         Name = a.Part.Name
+                     }).ToList()
                  }).OrderBy(x => x.Model)
                  .ThenByDescending(x => x.TravelledDistance)
                  .ToList();
+        }
+
+        public CarViewModel ShowParts(int id)
+        {
+            return this._context
+                .Cars
+                .Where(x => x.Id == id)
+                .Select(x => new CarViewModel
+                {
+                    Make = x.Make,
+                    Model = x.Model,
+                    TravelledDistance = x.TravelledDistance,
+                    Parts = x.Parts.
+                            Where(b => b.CarId == id)
+                              .Select(a => new PartViewModel
+                              {
+                                  Id = a.Part.Id,
+                                  Name = a.Part.Name
+                              }).ToList()
+                }).FirstOrDefault();
+        }
+        public List<CarViewModel> All()
+        {
+           return
+                this._context.Cars.Select(y => new CarViewModel
+            {
+                Make = y.Make,
+                Model = y.Model,
+                TravelledDistance = y.TravelledDistance
+            }).ToList();
         }
     }
 }

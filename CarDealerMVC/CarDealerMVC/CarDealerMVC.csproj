@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Customers\" />
+    <Folder Include="Views\Suppliers\" />
   </ItemGroup>
 
   <ItemGroup>

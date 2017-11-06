@@ -7,5 +7,7 @@ namespace CarDealerMVC.Services
     public interface ICustomerServices
     {
         IEnumerable<CustomerViewModel> OrderCustomers(string type);
+
+        CustomerViewModel CustomerById(int id);
     }
 }

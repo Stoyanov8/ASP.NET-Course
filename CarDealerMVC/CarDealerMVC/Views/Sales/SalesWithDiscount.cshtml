@@ -1,0 +1,17 @@
+﻿@page
+@model List<Sale>
+<table>
+    <tr>
+        <th>Model</th>
+        <th>Name</th>
+        <th>Discount</th>
+    </tr>
+    @foreach (var sale in Model)
+        {
+        <tr>
+            <td>@sale.Car.Model </td>
+            <td>@sale.Customer.Name </td>
+            <td>@sale.Discount </td>
+        </tr>
+        }
+</table>

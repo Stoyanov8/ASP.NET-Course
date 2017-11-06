@@ -1,7 +1,7 @@
 ﻿
 namespace CarDealerMVC.Models.CarViewModel
 {
-    using CarDealerMVC.Entities;
+    using CarDealerMVC.Models.PartViewModels;
     using System.Collections.Generic;
 
     public class CarViewModel
@@ -12,7 +12,6 @@ namespace CarDealerMVC.Models.CarViewModel
 
         public string Model { get; set; }
 
-        public ICollection<PartCars> Parts { get; set; }
-
+        public ICollection<PartViewModel> Parts { get; set; }
     }
 }

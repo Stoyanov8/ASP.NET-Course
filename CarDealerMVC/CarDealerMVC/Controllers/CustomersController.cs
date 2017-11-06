@@ -21,5 +21,11 @@
 
             return this.View(customers);
         }
+        public IActionResult CustomerById(int id)
+        {
+            var model = this._services.CustomerById(id);
+
+            return this.View(model);
+        }
     }
 }

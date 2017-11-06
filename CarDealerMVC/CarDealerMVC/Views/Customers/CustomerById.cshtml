@@ -1,0 +1,13 @@
+﻿@model CustomerViewModel
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Bought Cars</th>
+        <th>Money Spended</th>
+    </tr>
+    <tr>
+        <td>@Model.Name</td>
+        <td>@Model.Cars.BoughtCars </td>
+        <td>@String.Format("{0:0.00}",Model.Cars.MoneySpended)</td>
+    </tr> 
+</table>

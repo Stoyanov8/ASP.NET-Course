@@ -1,0 +1,20 @@
+﻿@model List<SaleViewModel>
+<table>
+    <tr>
+        <th>Make </th>
+        <th>Model </th>
+        <th>Customer Name</th>
+        <th>Price</th>
+    </tr>
+
+    @foreach (var sale in Model)
+    {
+        <tr>
+            <td>@sale.Car.Make</td>
+            <td>@sale.Car.Model</td>
+            <td>@sale.Customer.Name</td>
+            <td>@String.Format("{0:0.00}", sale.Price)</td>
+        </tr>
+    }
+
+</table>

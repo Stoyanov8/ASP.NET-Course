@@ -298,13 +298,13 @@ namespace CarDealerMVC.Data.Migrations
 
             modelBuilder.Entity("CarDealerMVC.Entities.PartCars", b =>
                 {
-                    b.HasOne("CarDealerMVC.Entities.Part", "Part")
-                        .WithMany("Cars")
+                    b.HasOne("CarDealerMVC.Entities.Car", "Car")
+                        .WithMany("Parts")
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("CarDealerMVC.Entities.Car", "Car")
-                        .WithMany("Parts")
+                    b.HasOne("CarDealerMVC.Entities.Part", "Part")
+                        .WithMany("Cars")
                         .HasForeignKey("PartId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

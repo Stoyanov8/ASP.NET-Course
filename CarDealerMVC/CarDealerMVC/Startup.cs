@@ -35,6 +35,8 @@ namespace CarDealerMVC
 
             services.AddTransient<ICustomerServices, CustomerServices>();
             services.AddTransient<ICarServices, CarServices>();
+            services.AddTransient<ISupplierServices, SupplierServices>();
+            services.AddTransient<ISaleServices, SaleServices>();
 
             services.AddMvc();
         }
@@ -65,10 +67,43 @@ namespace CarDealerMVC
                 template: "customers/all/{sort}",
                 defaults: new { controller = "Customers", action = "All" });
 
+
+                routes.MapRoute(
+                    name: "customerById",
+                    template: "customers/{id}",
+                    defaults: new { controller = "Customers", action = "CustomerById" });
+
                 routes.MapRoute(
                     name: "cars",
                     template: "cars/{make}",
                     defaults: new { controller = "Cars", action = "CarsByMake" });
+
+                routes.MapRoute(
+                 name: "parts",
+                 template: "cars/{id}/parts",
+                 defaults: new { controller = "Cars", action = "CarParts" });
+
+                routes.MapRoute(
+                name: "all",
+                template: "Cars/All", 
+                defaults: new { controller = "Cars", action = "All" });
+
+                routes.MapRoute(
+                    name: "supplier",
+                    template: "suppliers/{type}",
+                    defaults: new { controller = "Suppliers", action = "Filter" });
+
+                routes.MapRoute(name: "sales",
+                    template: "Sales/{id?}",
+                       defaults: new { controller = "Sales", action = "SelectSale" });
+
+                routes.MapRoute(name: "salesDiscounts",
+                     template: "Sales/discounted/{percent}",
+                        defaults: new { controller = "Sales", action = "DiscountByPercentage" });
+
+                routes.MapRoute(name: "discounts",
+                    template: "Sales/discounted",
+                       defaults: new { controller = "Sales", action = "SalesWithDiscount" });
 
                 routes.MapRoute(
                     name: "default",
