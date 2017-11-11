@@ -1,5 +1,4 @@
-﻿
-namespace CarDealerMVC.Models.CarViewModel
+﻿namespace CarDealerMVC.Models.CarViewModels
 {
     using CarDealerMVC.Models.PartViewModels;
     using System.Collections.Generic;

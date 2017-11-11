@@ -1,7 +1,7 @@
 ﻿namespace CarDealerMVC.Controllers
 {
-    using CarDealerMVC.Data;
-    using CarDealerMVC.Models.CarViewModel;
+    using CarDealerMVC.Entities;
+    using CarDealerMVC.Models.CarViewModels;
     using CarDealerMVC.Services.Contracts;
     using Microsoft.AspNetCore.Mvc;
     public class CarsController : Controller
@@ -31,22 +31,33 @@
             return this.View(models);
         }
         [Route("cars/add")]
-        public IActionResult AddCar() => this.View();
+        public IActionResult CreateCar()
+        {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+              
+                return RedirectToAction("Index", "Home", new { area = "" });
+
+            }
+
+            return this.View();
+        }
 
 
         [Route("cars/add")]
         [HttpPost]
-        public IActionResult AddCar(CarViewModel model)
+        public IActionResult CreateCar(CarViewModel car)
         {
             if (!this.ModelState.IsValid
-                || string.IsNullOrEmpty(model.Make)
-                || string.IsNullOrEmpty(model.Make))
+                || string.IsNullOrEmpty(car.Make)
+                || string.IsNullOrEmpty(car.Make))
             {
                 return this.View();
-            }            
-            this._services.AddCar(model.Make, model.Model, model.TravelledDistance);
+            }
+            this._services.AddCar(car.Make, car.Model, car.TravelledDistance);
 
-            return this.All();
+            return this.Redirect("all");
+
         }
     }
 }

@@ -1,16 +1,22 @@
 ﻿@model List<CarViewModel>
-    <table>
+@if (this.User.Identity.IsAuthenticated)
+{
+    <form asp-controller="Cars" asp-action="CreateCar" method="get">
+        <button class="btn btn-default" type="submit">Add Car</button>
+    </form>
+}
+<table>
+    <tr>
+        <th>Make </th>
+        <th>Model </th>
+        <th>Distance Travelled </th>
+    </tr>
+    @foreach (var car in Model)
+    {
         <tr>
-            <th>Make </th>
-            <th>Model </th>
-            <th>Distance Travelled </th>
+            <td> @car.Make </td>
+            <td> @car.Model </td>
+            <td> @car.TravelledDistance </td>
         </tr>
-        @foreach (var car in Model)
-        {
-            <tr>
-                <td> @car.Make </td>
-                <td> @car.Model </td>
-                <td> @car.TravelledDistance </td>
-            </tr>
-        }
-    </table>
+    }
+</table>

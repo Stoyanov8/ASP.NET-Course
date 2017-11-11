@@ -51,24 +51,24 @@
                 this._context
                 .Sales
                 .Where(a => a.Discount != 0.0)
-                .Select(a=> new SaleViewModel
+                .Select(a => new SaleViewModel
                 {
-                   Discount= a.Discount
+                    Discount = a.Discount
 
                 }).ToList();
         }
-        
-        public List<SaleViewModel> DiscountByPercentage (double percent)
+
+        public List<SaleViewModel> DiscountByPercentage(double percent)
         {
-           return this._context
-               .Sales
-               .Where(a => a.Discount == percent)
-               .Select(a => new SaleViewModel
-               {
-                   Car = this._context.Cars.FirstOrDefault(c => c.Id == a.CarId),
-                   Customer = a.Customer,
-                   Discount = percent,
-               }).ToList();
+            return this._context
+                .Sales
+                .Where(a => a.Discount == percent)
+                .Select(a => new SaleViewModel
+                {
+                    Car = this._context.Cars.FirstOrDefault(c => c.Id == a.CarId),
+                    Customer = a.Customer,
+                    Discount = percent,
+                }).ToList();
         }
         public double? CalculatePrice(int? customerId)
         {
@@ -92,6 +92,49 @@
                 }
             }
             return sum;
+        }
+
+        public AddSaleViewModel AllCarsAndCustomers()
+        {
+            var cars = new List<string>();
+
+            foreach (var car in this._context.Cars)
+            {
+                string carName = $"{car.Make } {car.Model}";
+                cars.Add(carName);
+            }
+            var customers = new List<string>();
+            foreach (var customer in this._context.Customers)
+            {
+                string customerName = customer.Name;
+                customers.Add(customerName);
+            }
+
+            return new AddSaleViewModel()
+            {
+                Cars = cars,
+                Customers = customers
+            };
+        }
+
+        public void AddNewSale(string car, string customer, double discount)
+        {
+            string[] carParts = car.Split(' ');
+
+            string make = carParts[0];
+
+            string model = carParts[1];
+
+            var carToAdd = this._context.Cars.FirstOrDefault(x => x.Make == make && x.Model == model);
+            var customerToAdd = this._context.Customers.FirstOrDefault(c => c.Name == customer);
+
+            this._context.Sales.Add(new Sale
+            {
+                Car = carToAdd,
+                Customer = customerToAdd,
+                Discount = discount
+            });
+            this._context.SaveChanges();
         }
     }
 

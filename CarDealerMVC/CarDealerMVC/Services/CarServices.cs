@@ -1,7 +1,7 @@
 ﻿namespace CarDealerMVC.Services.Contracts
 {
     using System.Collections.Generic;
-    using CarDealerMVC.Models.CarViewModel;
+    using CarDealerMVC.Models.CarViewModels;
     using CarDealerMVC.Data;
     using System.Linq;
     using CarDealerMVC.Entities;

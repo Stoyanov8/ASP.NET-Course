@@ -20,15 +20,32 @@
         }
         public IActionResult SalesWithDiscount()
         {
-           var sales= this._services.SalesWithDiscount();
+            var sales = this._services.SalesWithDiscount();
 
             return this.View(sales);
         }
-        public IActionResult DiscountByPercentage (double percent)
+        public IActionResult DiscountByPercentage(double percent)
         {
             var sales = this._services.DiscountByPercentage(percent);
 
             return this.View(sales);
+        }
+        [Route("sales/add")]
+        public IActionResult Add()
+        {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
+            var model = this._services.AllCarsAndCustomers();
+            return this.View(model);
+        }
+        [Route("sales/add")]
+        [HttpPost]
+        public IActionResult Add(AddSaleViewModel saleModel)
+        {
+            this._services.AddNewSale(saleModel.Car, saleModel.Customer, saleModel.Discount);
+            return this.SelectSale(0);
         }
     }
 }

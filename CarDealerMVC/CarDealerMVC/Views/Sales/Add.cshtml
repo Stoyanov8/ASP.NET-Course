@@ -1,0 +1,21 @@
+﻿@model AddSaleViewModel
+<div class="col-md-6" style="position:center">
+    <form asp-action="Add" method="post">
+        Customer:
+        <select asp-for="Customer">
+            @foreach (var customer in Model.Customers)
+            {
+                <option>@customer</option>
+            }
+        </select><span asp-validation-for="Customer" class="text-danger"></span> <br />
+        Car:
+        <select asp-for="Car">
+            @foreach (var car in Model.Cars)
+            {
+                <option>@car</option>
+            }
+        </select><span asp-validation-for="Car" class="text-danger"></span> <br />
+        Discount: <input asp-for="Discount" type="number" /><br />
+        <input type="submit" class="btn btn-primary" value="Submit" />
+    </form>
+</div>

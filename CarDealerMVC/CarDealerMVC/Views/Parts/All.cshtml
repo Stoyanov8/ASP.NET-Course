@@ -1,20 +1,23 @@
 ﻿@model List<PartViewModel>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Supplier</th>
-        </tr>
-        @foreach (var part in Model)
+<form asp-controller="Parts" asp-action="Create" method="get">
+    <button class="btn btn-default" type="submit">Add Part</button>
+</form>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Supplier</th>
+    </tr>
+    @foreach (var part in Model)
     {
-            <tr>
-                <td>@part.Name </td>
-                <td>@part.Price </td>
-                <td>@part.Quantity </td>
-                <td>@part.Supplier</td>
-                <td><a asp-area="" asp-controller="Parts" asp-action="Edit" asp-route-id=@part.Id class="alert-warning">Edit</a></td>
-                <td><a asp-area="" asp-controller="Parts" asp-action="Delete" asp-route-id=@part.Id class="alert-warning">Delete</a></td>
-            </tr>
+        <tr>
+            <td>@part.Name </td>
+            <td>@part.Price </td>
+            <td>@part.Quantity </td>
+            <td>@part.Supplier</td>
+            <td><a asp-area="" asp-controller="Parts" asp-action="Edit" asp-route-id=@part.Id class="alert-warning">Edit</a></td>
+            <td><a asp-area="" asp-controller="Parts" asp-action="Delete" asp-route-id=@part.Id class="alert-warning">Delete</a></td>
+        </tr>
     }
-    </table>
+</table>

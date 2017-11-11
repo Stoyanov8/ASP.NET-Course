@@ -1,6 +1,6 @@
 ﻿namespace CarDealerMVC.Services.Contracts
 {
-    using CarDealerMVC.Models.CarViewModel;
+    using CarDealerMVC.Models.CarViewModels;
     using System.Collections.Generic;
 
     public interface ICarServices

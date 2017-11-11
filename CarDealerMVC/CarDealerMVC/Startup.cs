@@ -60,7 +60,6 @@ namespace CarDealerMVC
 
             app.UseAuthentication();
 
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -86,7 +85,7 @@ namespace CarDealerMVC
 
                 routes.MapRoute(
                 name: "all",
-                template: "Cars/All", 
+                template: "Cars/All",
                 defaults: new { controller = "Cars", action = "All" });
 
                 routes.MapRoute(

@@ -9,5 +9,7 @@
 
         List<SaleViewModel> SelectSale(int id);
         List<SaleViewModel> DiscountByPercentage(double percent);
+        AddSaleViewModel AllCarsAndCustomers();
+        void AddNewSale(string car, string customer, double discount);
     }
 }

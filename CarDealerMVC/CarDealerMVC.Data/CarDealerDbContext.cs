@@ -17,7 +17,7 @@ namespace CarDealerMVC.Data
         public DbSet<Sale> Sales { get; set; }
 
         public DbSet<PartCars> PartCars { get; set; }
-        public object Select { get; set; }
+        
 
         public CarDealerDbContext(DbContextOptions<CarDealerDbContext> options)
             : base(options)
