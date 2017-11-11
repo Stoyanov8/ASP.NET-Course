@@ -1,10 +1,8 @@
 ﻿namespace CarDealerMVC.Controllers
 {
-    using CarDealerMVC.Data;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
-    using CarDealerMVC.Entities;
     using CarDealerMVC.Services;
+    using CarDealerMVC.Models.CustomerViewModels;
 
     public class CustomersController : Controller
     {
@@ -17,7 +15,7 @@
 
         public IActionResult All(string sort)
         {
-           var customers = this._services.OrderCustomers(sort);
+            var customers = this._services.OrderCustomers(sort);
 
             return this.View(customers);
         }
@@ -26,6 +24,47 @@
             var model = this._services.CustomerById(id);
 
             return this.View(model);
+        }
+
+        [Route("customers/create")]
+        public IActionResult Create() => this.View();
+
+        [HttpPost]
+        [Route("customers/create")]
+        public IActionResult Create(CustomerViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.View();
+            }
+            else
+            {
+                this._services.AddCustomer(model.Name, model.BirthDate);
+                return this.Redirect("all/ascending");
+            }
+        }
+        [Route("customers/edit")]
+        public IActionResult Edit(int id)
+        {
+            var model = this._services.CustomerById(id);
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [Route("customers/edit")]
+        public IActionResult Edit(CustomerViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+            else
+            {
+                int id = this._services.FindCustomerId(model.Name);
+                this._services.EditCustomer(id,model.Name, model.BirthDate);
+                return this.Redirect("all/ascending");
+            }
         }
     }
 }

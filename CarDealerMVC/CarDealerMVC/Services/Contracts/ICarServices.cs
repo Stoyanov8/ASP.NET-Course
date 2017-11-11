@@ -10,5 +10,6 @@
         CarViewModel ShowParts(int id);
 
         List<CarViewModel> All();
+        void AddCar(string make, string model, long travelledDistance);
     }
 }

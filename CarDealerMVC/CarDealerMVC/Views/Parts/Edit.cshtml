@@ -1,0 +1,8 @@
+﻿@model PartViewModel
+<div class="col-md-6" style="position:center">
+    <form asp-action="Edit" method="post">
+        Price: <input asp-for="Price" type="number" value="@Model.Price"/><br /><span asp-validation-for="Price" class="text-danger"></span>
+        Quantity: <input asp-for="Quantity" type="number"  value="@Model.Quantity"/><br /><span asp-validation-for="Quantity" class="text-danger"></span>
+        <input type="submit" class="btn btn-default" value="Edit Part" />
+    </form>
+</div>

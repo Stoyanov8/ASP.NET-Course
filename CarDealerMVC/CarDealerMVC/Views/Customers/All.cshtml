@@ -1,4 +1,4 @@
-﻿@model List<CustomerViewModel>
+﻿@model IList<CustomerViewModel>
     <table>
         <tr>
             <th>Name</th>
@@ -10,7 +10,8 @@
             <tr>
                 <td>@customer.Name </td>
                 <td>@customer.BirthDate.ToShortDateString() </td>
-                <td>@customer.IsYoungDriver </td>
+                <td>@(customer.IsYoungDriver ? "Yes" : "No") </td>
+                <td><a asp-area="" asp-controller="Customers" asp-action="Edit" asp-route-id=@customer.Id>Edit</a></td>
             </tr>
         }
     </table>

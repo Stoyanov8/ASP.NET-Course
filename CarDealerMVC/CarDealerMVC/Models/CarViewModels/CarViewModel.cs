@@ -3,14 +3,16 @@ namespace CarDealerMVC.Models.CarViewModel
 {
     using CarDealerMVC.Models.PartViewModels;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class CarViewModel
     {
-        public double TravelledDistance { get; set; }
-
+        [Required]
         public string Make { get; set; }
-
+        [Required]
         public string Model { get; set; }
+        [Required]
+        public long TravelledDistance { get; set; }
 
         public ICollection<PartViewModel> Parts { get; set; }
     }

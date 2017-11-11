@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using Models.SaleViewModels;
-    using CarDealerMVC.Entities;
 
     public interface ISaleServices
     {

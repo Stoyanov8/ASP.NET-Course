@@ -4,6 +4,7 @@
     using System.Linq;
     using CarDealerMVC.Models.CustomerViewModels;
     using CarDealerMVC.Data;
+    using System;
     using CarDealerMVC.Entities;
 
     public class CustomerServices : ICustomerServices
@@ -36,6 +37,7 @@
             return
                    customers.Select(x => new CustomerViewModel
                    {
+                       Id = x.Id,
                        Name = x.Name,
                        BirthDate = x.BirthDate,
                        IsYoungDriver = x.IsYoungDriver
@@ -48,6 +50,7 @@
                 .Where(x => x.Id == id)
                          .Select(x => new CustomerViewModel
                          {
+                             Id = x.Id,
                              Name = x.Name,
                              BirthDate = x.BirthDate,
                              IsYoungDriver = x.IsYoungDriver,
@@ -61,7 +64,38 @@
                          }).FirstOrDefault();
             return caca;
         }
-        public double? CalculatePrice(int customerId)
+
+        public void AddCustomer(string name, DateTime birthday)
+        {
+            bool isYoungDriver = false;
+            if (DateTime.Now.Year - birthday.Year < 23)
+            {
+                isYoungDriver = true;
+            }
+            this._context.Customers.Add(new Customer
+            {
+                Name = name,
+                BirthDate = birthday,
+                IsYoungDriver = isYoungDriver
+            });
+            this._context.SaveChanges();
+        }
+
+        public int FindCustomerId(string name)
+        {
+            return this._context.Customers
+                .FirstOrDefault(a => a.Name == name)
+                .Id;
+        }
+        public void EditCustomer(int id, string name, DateTime birthday)
+        {
+            var customer = this._context.Customers.FirstOrDefault(x => x.Id == id);
+            customer.Name = name;
+            customer.BirthDate = birthday;
+            this._context.SaveChanges();
+
+        }
+        private double? CalculatePrice(int customerId)
         {
             double? sum = 0.0;
 
@@ -77,8 +111,8 @@
             {
                 var partsPrice = this._context.Cars
                     .Where(c => c.Id == sale.CarId)
-                    .Select(p => p.Parts.Sum(a=> a.Part.Price)).FirstOrDefault();
-                if(partsPrice != null)
+                    .Select(p => p.Parts.Sum(a => a.Part.Price)).FirstOrDefault();
+                if (partsPrice ==0)
                 {
                     sum += partsPrice;
                     sum -= sum * (sale.Discount / 10);

@@ -56,13 +56,24 @@
         }
         public List<CarViewModel> All()
         {
-           return
-                this._context.Cars.Select(y => new CarViewModel
+            return
+                 this._context.Cars.Select(y => new CarViewModel
+                 {
+                     Make = y.Make,
+                     Model = y.Model,
+                     TravelledDistance = y.TravelledDistance
+                 }).ToList();
+        }
+
+        public void AddCar(string make, string model, long travelledDistance)
+        {
+            this._context.Cars.Add(new Car()
             {
-                Make = y.Make,
-                Model = y.Model,
-                TravelledDistance = y.TravelledDistance
-            }).ToList();
+                Make = make,
+                Model = model,
+                TravelledDistance = travelledDistance
+            });
+            this._context.SaveChanges();
         }
     }
 }
